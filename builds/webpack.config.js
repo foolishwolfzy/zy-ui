@@ -1,45 +1,37 @@
-const { VueLoaderPlugin } = require("vue-loader");
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const path = require('path')
+const path = require('path');
+const { VueLoaderPlugin } = require('vue-loader')
 module.exports = {
-    mode: 'development',
-    devtool:'source-map',
-    entry: path.resolve(__dirname, 'main.ts'), // 打包入口
+    mode: 'production',
+    entry: path.resolve(__dirname, '../packages/zy-ui/index.ts'),
     output: {
-        path: path.resolve(__dirname, '../website-dist'), // 出口
-        filename: 'bundle.js'
+        path: path.resolve(__dirname, '../lib'),
+        filename: 'index.js',
+        libraryTarget: 'umd',// 支持commonjs和amd 不支持es6 可直接在浏览器使用
+        library: 'zy-ui',
     },
-    resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.vue', '.json'] // 解析文件顺序
+    externals: { // 排除vue打包
+        vue: {
+            root: 'Vue',
+            commonjs: 'vue',
+            commonjs2: 'vue',
+        },
     },
     module: {
-        rules: [{ // 识别vue
+        rules: [{
                 test: /\.vue$/,
                 use: 'vue-loader',
             },
-            { // 识别tsx
+            {
                 test: /\.(ts|js)x?$/,
                 exclude: /node_modules/,
-                loader: 'babel-loader'
+                loader: 'babel-loader',
             },
-            { // 识别图标...
-                test: /\.(svg|otf|ttf|woff|eot|gif|png)$/,
-                loader: 'url-loader',
-            },
-            { // 识别样式
-                test: /\.(scss|css)$/,
-                use: [
-                    'style-loader',
-                    'css-loader',
-                    'sass-loader'
-                ]
-            }
-        ],
+        ]
+    },
+    resolve: {
+        extensions: ['.ts', '.tsx', '.js', '.json'],
     },
     plugins: [
         new VueLoaderPlugin(),
-        new HtmlWebpackPlugin({ // html插件
-            template: path.resolve(__dirname, 'template.html')
-        })
     ]
 }

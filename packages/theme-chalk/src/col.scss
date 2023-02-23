@@ -1,0 +1,79 @@
+@use "sass:math";
+
+@import './common/var.scss';
+@import './mixins/mixin.scss';
+
+// BEM规范
+@include b(col) {
+  box-sizing: border-box;
+  @for $i from 0 through 24 {
+      &.#{$namespace}-col-span-#{$i} {
+          max-width: (math.div(1, 24) * $i * 100) * 1%;
+          flex: (math.div(1, 24) * $i * 100) * 1%
+      }
+      &.#{$namespace}-col-offset-#{$i} {
+          margin-left: (math.div(1, 24) * $i * 100) * 1%
+      }
+  }
+}
+
+@include res(xs) {
+  @for $i from 0 through 24 {
+    .#{$namespace}-col-xs-#{$i} {
+      max-width: (math.div(1, 24) * $i * 100) * 1%;
+      flex: 0 0 (math.div(1, 24) * $i * 100) * 1%;
+    }
+    .#{$namespace}-col-xs-offset-#{$i} {
+      margin-left: (math.div(1, 24) * $i * 100) * 1%;
+    }
+  }
+}
+
+@include res(sm) {
+  @for $i from 0 through 24 {
+    .#{$namespace}-col-sm-#{$i} {
+      max-width: (math.div(1, 24) * $i * 100) * 1%;
+      flex: 0 0 (math.div(1, 24) * $i * 100) * 1%;
+    }
+    .#{$namespace}-col-sm-offset-#{$i} {
+      margin-left: (math.div(1, 24) * $i * 100) * 1%;
+    }
+  }
+}
+
+@include res(md) {
+  @for $i from 0 through 24 {
+    .#{$namespace}-col-md-#{$i} {
+      max-width: (math.div(1, 24) * $i * 100) * 1%;
+      flex: 0 0 (math.div(1, 24) * $i * 100) * 1%;
+    }
+
+    .#{$namespace}-col-md-offset-#{$i} {
+      margin-left: (math.div(1, 24) * $i * 100) * 1%;
+    }
+  }
+}
+
+@include res(lg) {
+  @for $i from 0 through 24 {
+    .#{$namespace}-col-lg-#{$i} {
+      max-width: (math.div(1, 24) * $i * 100) * 1%;
+      flex: 0 0 (math.div(1, 24) * $i * 100) * 1%;
+    }
+    .#{$namespace}-col-lg-offset-#{$i} {
+      margin-left: (math.div(1, 24) * $i * 100) * 1%;
+    }
+  }
+}
+
+@include res(xl) {
+  @for $i from 0 through 24 {
+    .#{$namespace}-col-xl-#{$i} {
+      max-width: (math.div(1, 24) * $i * 100) * 1%;
+      flex: 0 0 (math.div(1, 24) * $i * 100) * 1%;
+    }
+    .#{$namespace}-col-xl-offset-#{$i} {
+      margin-left: (math.div(1, 24) * $i * 100) * 1%;
+    }
+  }
+}

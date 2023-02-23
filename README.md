@@ -1,0 +1,1 @@
+1. sass2.0.0.0 ‘/’报错的问题 安装npm install -g sass-migrator 再执行命令 sass-migrator division **/*.scss 统一替换

@@ -1,0 +1,22 @@
+{
+  "name": "@zy-ui/col",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "zy <15018411119@163.com>",
+  "homepage": "",
+  "license": "ISC",
+  "main": "lib/col.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "http://r.cnpmjs.org/"
+  },
+  "scripts": {
+    "test": "node ./__tests__/col.test.js"
+  }
+}
